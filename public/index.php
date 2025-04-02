@@ -17,15 +17,17 @@ function dd($value) {
 /* YOUR CODE (Instructions in README.md) */
 
 require APP_PATH."App.php";
+require APP_PATH."helpers.php";
 
 $files = getTransactionFiles(FILES_PATH);
 
 $transactions = [];
 
 foreach($files as $file) {
-    $transactions = array_merge($transactions,getTransactions($file, 'formatAmount'));
-    $balance = calculateBalance($transactions);
+    $transactions = array_merge($transactions,getTransactions($file, 'extractAmount'));
 }
+
+$balance = calculateBalance($transactions);
 
 require VIEWS_PATH . 'transactions.php';
 

@@ -36,7 +36,7 @@ function getTransactions($fileName, ?callable $transactionHandler = null)
 }
 
 
-function formatAmount($transactionRow) {
+function extractAmount($transactionRow) {
 
         [$date, $checkNumber, $description, $amount] = $transactionRow;
 
@@ -48,13 +48,6 @@ function formatAmount($transactionRow) {
         'description'   => $description,
         'amount'        => $amountSanitized
     ];
-}
-
-
-function formatDate($date) {
-
-    return date("M j Y", strtotime($date));
-
 }
 
 

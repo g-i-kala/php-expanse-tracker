@@ -40,7 +40,9 @@
                         <td><?= formatDate($transaction['date']) ?></td>
                         <td><?= $transaction['checkNumber'] ?></td>
                         <td><?= $transaction['description'] ?></td>
-                        <td><?= $transaction['amount'] ?></td>
+                        <td <?= valueStyle($transaction['amount']) ?>>
+                            <?= formatAmount($transaction['amount']) ?>
+                        </td>
                     </tr>   
                     <?php endforeach ?>
                 <?php endif ?>
@@ -48,15 +50,15 @@
             <tfoot>
                 <tr>
                     <th colspan="3">Total Income:</th>
-                    <td><?= $balance['income'] ?></td>
+                    <td><?= $balance['income'] ?? 0 ?></td>
                 </tr>
                 <tr>
                     <th colspan="3">Total Expense:</th>
-                    <td><?= $balance['expences'] ?></td>
+                    <td><?= $balance['expences'] ?? 0 ?></td>
                 </tr>
                 <tr>
                     <th colspan="3">Net Total:</th>
-                    <td><?= $balance['netTotal'] ?></td>
+                    <td><?= $balance['netTotal'] ?? 0 ?></td>
                 </tr>
             </tfoot>
         </table>
